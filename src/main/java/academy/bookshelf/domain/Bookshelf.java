@@ -8,12 +8,18 @@ public class Bookshelf {
 
     private List<Book> books = new ArrayList<>();
 
-    public void add(Book book) {
+    public int add(Book book) {
         books.add(book);
+        return books.size();
     }
 
     public void remove(Book book){
         books.remove(book);
+    }
+
+    public void remove(int id) {
+        validateBookExists(id);
+        books.remove(toZeroBasedIndex(id));
     }
 
     public List<Book> findAllBooks() {
@@ -67,5 +73,18 @@ public class Bookshelf {
         return books.contains(book);
     }
 
+    public Book findBook(int id) {
+        validateBookExists(id);
+        return books.get(toZeroBasedIndex(id));
+    }
 
+    private void validateBookExists(int id) {
+        if (books.size() < id){
+            throw new BookNotFoundException(id);
+        }
+    }
+
+    private int toZeroBasedIndex(int id) {
+        return id - 1;
+    }
 }

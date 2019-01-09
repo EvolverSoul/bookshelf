@@ -50,4 +50,39 @@ public class BookshelfTest {
         List<Book> books = bookshelf.findAllBooks();
         assertThat(books).containsExactly(); // Not correct implementation, discuss with Alan
     }
+
+    @Test
+    public void findsBookByID(){
+        Book book1 = new Book("book1", "", "", "");
+        bookshelf.add(book1);
+
+        Book book = bookshelf.findBook(1);
+
+        assertThat(book.getTitle()).isEqualTo("book1");
+    }
+
+    @Test(expected = BookNotFoundException.class)
+    public void findBookReportsBookNotFound(){
+        bookshelf.findBook(1);
+    }
+
+    @Test(expected = BookNotFoundException.class)
+    public void removesBookByIdWhenPresent(){
+        Book book1 = new Book("book1", "", "", "");
+        int id = bookshelf.add(book1);
+
+        bookshelf.remove(id);
+        // Expect to throw exception
+        bookshelf.findBook(id);
+    }
+
+    @Test(expected = BookNotFoundException.class)
+    public void removesBookByIdWhenNotPresent(){
+        // Bookshelf is empty.
+        bookshelf.remove(1);
+        // Expect to throw exception
+        bookshelf.findBook(1);
+    }
+
+
 }
