@@ -1,8 +1,8 @@
 package academy.bookshelf.rest;
 
 import academy.bookshelf.domain.Book;
-import academy.bookshelf.domain.BookNotFoundException;
 import academy.bookshelf.domain.Bookshelf;
+import academy.bookshelf.domain.InMemoryBookshelf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
