@@ -1,9 +1,11 @@
 package academy.bookshelf.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class JpaBookshelf implements Bookshelf {
 
     private final BookRepository repository;
