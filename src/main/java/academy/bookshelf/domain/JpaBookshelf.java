@@ -14,9 +14,11 @@ public class JpaBookshelf implements Bookshelf {
     public JpaBookshelf(BookRepository repository){
         this.repository = repository;
     }
+
     @Override
     public int add(Book book) {
-        return 0;
+        repository.save(book);
+        return book.getId().intValue();
     }
 
     @Override
@@ -31,7 +33,7 @@ public class JpaBookshelf implements Bookshelf {
 
     @Override
     public List<Book> findAllBooks() {
-        return null;
+        return repository.findAll();
     }
 
     @Override

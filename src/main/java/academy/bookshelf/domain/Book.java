@@ -20,6 +20,9 @@ public class Book {
 
     private @Id @GeneratedValue Long id;
 
+    public Book(){
+        // No action
+    }
     public Book(String title, String author, String genre, String subGenre) {
         this.title = title;
         this.author = author;

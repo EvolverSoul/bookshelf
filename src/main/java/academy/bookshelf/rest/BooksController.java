@@ -13,19 +13,24 @@ public class BooksController {
 
 
     @Autowired
-    BooksController(Bookshelf bookshelf){
+    public BooksController(Bookshelf bookshelf){
         this.bookshelf = bookshelf;
     }
 
     // Aggregate Root
 
     @GetMapping("/books")
-    List<Book> all (){
+    public List<Book> all (){
         return bookshelf.findAllBooks();
     }
 
+    @GetMapping("/")
+    public String hello(){
+        return "Hello";
+    }
+
     @PostMapping("/books")
-    String newBook(@RequestBody Book newBook){
+    public String newBook(@RequestBody Book newBook){
         int bookId = bookshelf.add(newBook);
         return "/books/" + bookId;
     }
@@ -33,7 +38,7 @@ public class BooksController {
     // Single Item
 
     @GetMapping("/books/{id}")
-    Book one(@PathVariable int id){
+    public Book one(@PathVariable int id){
         return bookshelf.findBook(id);
     }
 
@@ -52,7 +57,7 @@ public class BooksController {
 //    }
 //
     @DeleteMapping("/books/{id}")
-    void deleteBook(@PathVariable int id){
+    public void deleteBook(@PathVariable int id){
         bookshelf.remove(id);
     }
 
