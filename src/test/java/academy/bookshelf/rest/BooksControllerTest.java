@@ -54,8 +54,8 @@ public class BooksControllerTest {
 
     @Test
     public void websiteExampleTest() throws Exception {
-        this.mvc.perform(get("/books")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("person1")));
+        this.mvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
+                .andExpect(content().string(containsString("Hello")));
     }
 
 }
