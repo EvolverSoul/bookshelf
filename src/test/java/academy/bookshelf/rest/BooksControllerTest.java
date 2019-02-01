@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -23,10 +24,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
+//@SpringBootTest
 @RunWith(SpringRunner.class)
-//@WebMvcTest(BooksController.class)
-@AutoConfigureMockMvc
+@WebMvcTest(BooksController.class)
+//@AutoConfigureMockMvc
 public class BooksControllerTest {
 
     @Autowired
@@ -52,10 +53,5 @@ public class BooksControllerTest {
         // write a second expect() later to find the content of the book
     }
 
-    @Test
-    public void websiteExampleTest() throws Exception {
-        this.mvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("Hello")));
-    }
 
 }
